@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['在接下来的一段时间里，你将不断学习并参与改进克隆人现有科技，没有人知道你能为克隆人带来什么，除了你自己。',
+'知识高塔游戏介绍：一层层的阶梯代表着你对知识的求索之路，你是否能在越来越狭窄的道路上成功登顶？你一共有三次机会进行游戏。若你在三次机会里得到9分及以上的成绩，则代表你可以带领克隆人的科技攀登上新的高峰。'
+        ]
+        let present = 0;
+        //放对应的人物
+        let c = ['', '']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                memo(2)
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>3-7知识高塔</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/lab.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot14.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='../mini-game/g3/g3.html'">开始游戏</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

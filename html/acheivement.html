@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"> 
+    <link rel="stylesheet" href="../css/master.css">
+    <script src='../js/main.js'></script>
+    <link rel="icon" href="images/favicon.ico">
+    <style type="text/css">
+        #wrapper {
+            background: url("../images/cover0.png");
+            background-size: cover
+        }
+
+        body {
+            position: relative;
+            bottom: 3vh;
+        }
+
+        #achievement_area {
+            width: 80vw;
+            height: 70vh;
+            margin: 10vh 10vw;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+
+        .achievement {
+            text-align: center;
+            font-family: "zhuangbi", "SimSun";
+            border: 5px black;
+        }
+
+        .achievement img {
+            margin: auto;
+            width: 18vw;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .achievement p {
+            color: white;
+            text-shadow: 1px 1px 5px black;
+        }
+    </style>
+    <script>
+        t = ['正义审判', '全新征程', '颠覆政权', '和平演变', '沉默蝼蚁', '相对幸福', '提前终老', '以身殉道']
+        r = ['../images/achievement/he1 .png', '../images/achievement/he2.png', '../images/achievement/te1.png',
+            '../images/achievement/te2.png', '../images/achievement/be1.png', '../images/achievement/be2.png',
+            '../images/achievement/be3.png', '../images/achievement/be4.png'
+        ]
+
+        function check() {
+            achievements = document.getElementById('achievement_area').children
+            arr = JSON.parse(localStorage['achievement'])
+            for (let i = 0; i < 8; i++) {
+                if (arr[i] == 1) {
+                    achievements[i].children[0].src = r[i]
+                    achievements[i].children[1].innerHTML = t[i]
+                }
+            }
+        }
+
+        function real() {
+            let relbtn = document.getElementById('real')
+            achievements = document.getElementById('achievement_area').children
+            if (localStorage['real'] == 1) {
+                for (let i = 0; i < 8; i++) {
+                    achievements[i].children[0].src = r[i]
+                    achievements[i].children[1].innerHTML = t[i]
+                }
+                localStorage['real'] = 0
+                relbtn.innerHTML = '恢复'
+            } else {
+                for (let i = 0; i < 8; i++) {
+                    if (arr[i] == 0) {
+                        achievements[i].children[0].src = '../images/lock.png'
+                        achievements[i].children[1].innerHTML = '???'
+                    }
+                }
+                localStorage['real'] = 1
+                relbtn.innerHTML = '真视'
+            }
+        }
+    </script>
+    <title>acheivement</title>
+</head>
+
+<body onpageshow="check()" onclick="msplay()">
+    <audio id='ms' autoplay='autoplay' loop="loop" preload="auto" controls="controls" src='../music/function.mp3'>
+    </audio>
+    <div id="wrapper">
+        <nav>
+            <button type="button" class='btn' onclick="history.back()">返回</button>
+            <button type="button" class='btn_1' id='real' onclick="real()">真视</button>
+        </nav>
+        <div id="achievement_area">
+            <div class="achievement" id='a1'>
+                <img src='../images/lock.png'>
+                <p>???</p>
+            </div>
+            <div class="achievement" id='a2'>
+                <img src='../images/lock.png'>
+                <p>???</p>
+            </div>
+            <div class="achievement" id='a3'>
+                <img src='../images/lock.png'>
+                <p>???</p>
+            </div>
+            <div class="achievement" id='a4'>
+                <img src='../images/lock.png'>
+                <p>???</p>
+            </div>
+            <div class="achievement" id='a5'>
+                <img src='../images/lock.png'>
+                <p>???</p>
+            </div>
+            <div class="achievement" id='a6'>
+                <img src='../images/lock.png'>
+                <p>???</p>
+            </div>
+            <div class="achievement" id='a7'>
+                <img src='../images/lock.png'>
+                <p>???</p>
+            </div>
+            <div class="achievement" id='a8'>
+                <img src='../images/lock.png'>
+                <p>???</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

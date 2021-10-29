@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="../../../js/main.js"></script>
+    <link rel="icon" href="../images/favicon.ico">
+    <title>小游戏</title>
+    <style type="text/css">
+    body {
+            height: 100vh;
+            width: 100vw;
+            background:linear-gradient(35deg,#CCFFFF,#FFCCCC);
+            text-align: center;
+            margin: 0;
+        }
+        #prompt_area {
+            z-index: 1;
+            position: absolute;
+            text-align: center;
+            width: 50vw;
+            height: 50vh;
+            margin: 25vh 25vw;
+            background: url('../images/white.jpg');
+            box-shadow: 3vh 3vw 3vw rgba(0, 0, 0, .5);
+            border-radius: .5vw;
+            display: grid;
+            position: fixed;
+            background: white;
+            grid-template-rows: repeat(3, 1fr);
+            font-family:"SimSun";
+            font-size: 2vw;
+        }
+
+        #prompt_area button {
+            margin: 0 5vw;
+            font-family: "zhuangbi", "SimSun";
+            font-size: 2vw;
+        }
+
+        #wrapper {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        #game_area {
+            z-index: -1;
+            opacity: 0;
+            height: 80vh;
+            width: 80vw;
+            display: grid;
+            grid-template-columns: 60vw 20vw;
+        }
+
+        .g_item {
+            border: 5px solid red;
+            width: 8vw;
+            height: 8vh;
+            line-height: 8vh;
+            margin: 1vh;
+        }
+
+        .choosen {
+            width: 8vw;
+            height: 8vh;
+            line-height: 8vh;
+            background-color: #AAFFEE;
+            border: none;
+            margin: 1vh;
+        }
+
+        .d_item {
+            border: 5px solid #2775b6;
+            height: 13vh;
+            line-height: 13vh;
+            margin: 1vh;
+            width: 8vw;
+        }
+
+        #g_area {
+            display: grid;
+            border: 3px solid black;
+            margin: 1vh;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+        }
+
+        #d_area {
+            display: grid;
+            border: 3px solid#5cb3cc;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 10vh repeat(5, 1fr);
+        }
+
+        #countdown {
+            grid-area: 1/1/2/3;
+        }
+    </style>
+</head>
+
+<body>
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <div id='name_area'></div>
+        <div id="dialog_area"></div>
+
+        <div id="function_area"> </div>
+
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>你的理智正在不断流失，请在一切无法挽回之前成功集齐所有理智碎片,连续点击相同序号理智碎片即可成功收集改序号对应理智碎片</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='gameinit();promtdown()'>确定</button>
+            </div>
+        </div>
+
+        <div id='game_area'>
+            <div id='g_area'></div>
+            <div id='d_area'>
+                <div id='countdown'></div>
+            </div>
+        </div>
+    </div>
+    <script defer="defer">
+        let pair = []
+
+        let game_area = document.getElementById('game_area')
+        let d_area = document.getElementById('d_area')
+        let g_area = document.getElementById('g_area')
+        console.log(d_area)
+        console.log('ga')
+        console.log(g_area)
+
+        function myrand(i) {
+            return Math.ceil(Math.random() * i);
+        }
+
+        let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+        function gameinit() {
+
+            for (let i = 1; i <= 10; i++) {
+                let newd = document.createElement('div')
+                newd.className = 'd_item';
+                newd.innerHTML = i
+                d_area.appendChild(newd)
+            }
+
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 6; j++) {
+                    let newg = document.createElement('div')
+                    newg.id = `${i}_${j}`
+                    newg.className = 'g_item';
+                    console.log()
+                    newg.innerHTML = myrand(10)
+                    g_area.appendChild(newg)
+                }
+            }
+            game_area.style.opacity = 1
+        }
+        let g_items = document.getElementsByClassName('g_item')
+        let d_items = document.getElementsByClassName('d_item')
+
+        g_area.onclick = function (e) {
+            let choosen = e.target;
+            for (let i = 0; i < 48; i++) {
+                let present = g_items[i]
+                if (present == choosen) {
+                    present.className = 'choosen'
+                    pair.push(present)
+                    console.log(pair)
+                    if (pair.length == 2) {
+                        let v1 = pair[0].innerHTML,
+                            v2 = pair[1].innerHTML
+                        let n1 = pair[0],
+                            n2 = pair[1]
+                        console.log(v1)
+                        console.log(v2)
+                        if (n1 != n2 && v1 == v2) {
+                            arr[v1 - 1] = 1
+                            d_items[v1 - 1].style.backgroundColor = 'blue'
+                        }
+                        n1.className = 'g_item'
+                        n2.className = 'g_item'
+                        pair = []
+                    }
+                }
+            }
+        }
+
+        let timer = setInterval(function () {
+            g_items[myrand(48) - 1].innerHTML = myrand(10)
+        }, 60);
+
+        let t2 = setInterval(function () {
+            for (let i = 0; i < 10; i++) {
+                if (arr[i] == 0) return
+            }
+            document.getElementById('prompt_text').innerHTML = '成功完成'
+            let btn = document.getElementById('prompt_button').firstChild
+            btn.onclick = location = '../../chapter1/1-1.html'
+            btn.addEventListener('click', promtdown());
+            promtshow()
+        }, 10)
+    </script>
+</body>
+
+</html>

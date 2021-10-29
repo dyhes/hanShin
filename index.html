@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"> 
+    <link rel="stylesheet" href="./css/master.css">
+    <link rel="icon" href="images/lin.ico">
+    <style type="text/css">
+        #wrapper {
+            background: url("./images/cover0.png");
+            background-size: cover
+        }
+
+        body {
+            position: relative;
+            bottom: 3vh;
+        }
+    </style>
+    <script src="./js/main.js"></script>
+    <title>主页</title>
+</head>
+
+<body onclick="msplay()">
+    <audio id='ms'autoplay='autoplay' loop="loop"  preload="auto" controls="controls" src="./music/index.mp3">
+    </audio>
+    <div id="wrapper">
+        <nav>
+            <a href="./index.html">回到主页</a>
+            <a href="./html/signin.html">登录界面</a>
+            <a href="./us/groupimage.html">关于我们</a>
+        </nav>
+        <div id="option_area">
+            <div></div>
+            <div id="index-btn">
+                <button type="button" onclick="location='./html/signin.html'">登录</button>
+                <button type="button" onclick="location='./html/register.html'">注册</button>
+                <button type="button" onclick="start();location='./html/chapter1/0_video.html'">开始游戏</button>
+                <button type="button" onclick="location='./html/storage.html'">继续游戏</button>
+                <button type="button" onclick="promtshow()">初始化</button>
+            </div>
+            <div></div>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>您是否确定清空所有存档及成就？</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='init();promtdown()'>确定</button>
+                <button type="button" onclick='promtdown()'>取消</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

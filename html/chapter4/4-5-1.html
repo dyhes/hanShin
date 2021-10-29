@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['就在这时，门外忽然传来极大的警报声，你的脸色骤变。这代表着你设下的防御科技已经被人类破解，人类马上就要闯入这里。',
+'然而行动无可更改，克隆人已无路可退！',
+'你咬咬牙，迅速将林夕伪装成被劫持的状态，然后握紧了手中的枪械，准备进行最后的困兽之斗。',
+'“视频已上传，但科技拦截失败，请各位作好战斗准备。”',
+'你对着军用麦克风说到，然后直接将麦克风踩碎。',
+'办公室的大门被强行破开，而你举起枪迎上突击进入的人类军队。',
+'你将为了克隆人的未来，拼杀到生命的尽头。',
+'喋血牺牲，在所不惜。']
+        let present = 0;
+        let c=['','','','你','','','','']
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,4,'character1','../../images/character/pro5.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+               
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-5突发事件</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/control.png" );
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/pro4.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='../end/be4.html'">战斗！</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

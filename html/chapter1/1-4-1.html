@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['你听到这句话虽然有点不适，还是保持着沉默，没有接话。老板抬头看了你一眼，也没继续说下去，只是把称好的菜给了你，又去接待其他克隆人客人。',
+            '你如往常一样带着菜回家，将那些不协调感统统抛在脑后。',
+            '渐渐地，你不再会感受到不对劲的地方，这样的生活对你来说是如此的正常。每天作为一个普通的克隆人，去采购食材、打扫整栋别墅，为主人家献出全部的忠诚，偶尔承受来自人类的恶意………直到前往“养老院”的那天。',
+            '你还是没有想起从前的记忆，但那又能怎么样呢？乏善可陈的过去，没有什么回忆的必要。你的余生都在重复过往每一天的经历，直至生命的终结。',
+            '就像那些总是保持沉默，也无人在意的蝼蚁。']
+        let present = 0;
+        let c=['','','','','','','','','']
+
+        function run() {
+            dialog(t,c,present);
+            present++
+            changeBackground(present,1,'../../images/black.png');
+            changeCharacter(present,1,"character1",'../../images/character/prot6.png',0);
+            if (present >2*t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>1-4沉默</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/shopbg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/gua0.png" id="character2" width="45%">
+    <embed src="../../images/character/prot6.png" id="character1" width="45%">
+    <div id="wrapper">
+        <div id='name_area'></div>
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id="dialog_area"></div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='../end/be1.html'">沉默不语</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['你摇了摇头。林夕是中立军，但你的信仰是彻底改变这个世界，不需要她作出这样的牺牲。况且作为朋友，你也并不能接受她试图使人类觉醒所以自我牺牲的计划。',
+'林夕还想说服你，但被你出手击晕。',
+'“林夕，我们连死都不怕了，为什么不能活下来？”',
+'你看着晕过去的林夕说道。']
+        let present = 0;
+        //放对应的人物
+        let c = ['','','你','','','','','']//填入名称，旁白不用填
+
+        function check() {
+            let arr=JSON.parse(localStorage['memory'])
+            let cnt=0;
+            for(let i=0;i<arr.length;i++){
+                if(arr[i])cnt+=1
+            }
+            if(cnt<3)location='./4-5-1.html'
+            else if(cnt==3)location='./4-5-2.html'
+            else location='./4-5-3.html'
+        }
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,0,'character2','../../images/character/lin6.png',1)
+            changeCharacter(present,2,'character2','../../images/character/lin5.png',0)
+            changeCharacter(present,0,'character1','../../images/character/pro8.png',1)
+            changeCharacter(present,2,'character1','../../images/character/pro7.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                check()
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-5强制昏迷</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/control.png" );
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/gua0.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump();check()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

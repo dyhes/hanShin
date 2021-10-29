@@ -1,0 +1,131 @@
+* {
+    margin:0;
+    padding:0;
+    }
+
+
+body{
+    height: 100vh;
+    width: 100vm;
+    position: relative;
+    bottom:3vh;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+p{
+    text-align:center;
+    margin:2vh;
+    line-height: 5vh;
+    font-family: STXinwei;
+    font-size:3vh;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+a:visited{
+    color:black;
+}
+
+nav{
+    height:10vh;
+    width:100%;
+    background:rgb(29,29,59);
+    line-height:10vh;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+}
+nav p{
+    font-family: monospace;
+    color:white;
+    opacity:0.95;
+}
+
+nav p:hover{
+    position: relative;
+    top:5px;
+}
+main{
+    height:80vh;
+    width:100%;
+    overflow:hidden;
+    box-sizing: border-box;
+}
+
+main div{
+    height:80vh;
+    width:100%;
+    background: linear-gradient(35deg,#ccffff,#ffcccc);
+}
+
+
+#about{
+    display:grid;
+    grid-template-columns: 70vw 30vw;
+    grid-template-areas:
+    "tex figure";
+}
+
+#about p{
+    position: relative;
+    top:20vh; 
+}
+
+#about img{
+    grid-area:figure;
+    width:30vw;
+    height:auto;
+    margin:auto;
+}
+
+#about #text{
+    grid-area:tex;
+    height:80vh;
+}
+
+#interest{
+    position:relative;
+    bottom:2vh;
+}
+
+#interest img{
+    width:60vw;
+    height:auto;
+    margin:0 20vw;
+    box-shadow:1vh 1vw 1vw rgba(0,0,0,.5);
+    border-radius:.5vw;
+}
+
+#diana{
+    display:grid;
+    background-color: white;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+    "figure tex";
+}
+
+#diana img{
+    grid-area:figure;
+    height:80vh;
+    width:auto;
+    margin:auto;
+}
+
+footer{
+    height:10vh;
+    width:100%;
+    background:rgb(29,29,59);
+    line-height:10vh;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+}
+
+footer p{
+    font-family: monospace;
+    color:white;
+    opacity:0.95;
+}

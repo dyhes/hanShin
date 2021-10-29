@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['克隆人的惨痛现状一幕幕浮现在你眼前……作为替身养大的，被宰杀取得器官；作为工具的，用于满足人类恶劣的操控欲与兽性；被蒙蔽、以为达到工作年限就能够前往养老院休养生息的，成为人体实验的材料又或者走私到其他星球作为奴隶……',
+'这个世界上有太多太多肮脏不堪的事，时时刻刻都在发生，而这一切的一切，都唤起你战斗的勇气。没错……你必须拥有作为一名战士的觉悟，因为守护与反抗永远建立在背负与牺牲之上，即使杀戮本身绝无正确可言，但必须有人背负起这份必要之恶。',
+'你跟着连胜站起身来，缓缓握紧了手中的枪，勾住扳机的手指也不再颤抖。（克隆人倾向+1）',
+'此次行动最后大获成功，这一批需要营救的克隆人都在行动中解除了控制环，而你在行动中起到了重要作用。'
+        ]
+        let present = 0;
+        let c = ['', '', '', '','','','','','','','','','','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,0,'character2','../../images/character/lian4.png',1)
+            changeCharacter(present,2,'character2','../../images/character/lian1.png',1)
+            if(present==6){
+                let i=localStorage['emo']
+                localStorage['emo']=i-1
+            }
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>3-2效力</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/operate.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot16.png" id="character1" width="45%">
+    <embed src="../../images/character/lian2.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='3-3.html'">行动结束</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

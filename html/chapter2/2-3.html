@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['……疼', '……好疼……',
+            '好痛……真的好痛啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊！！！！！',
+            '全身撕裂般地痛楚，使你发疯般地想要呼喊，但你的胸口却被牢牢束缚住不能起伏，导致你甚至不能呼吸。',
+            '缸中的鲤鱼越出边界，只能挣扎着走向死亡。你更幸运一点，只要能在死神的镰刀下苟延残喘片刻，就可以获得拥抱新世界的资格。',
+            '“当一个人被逼到绝路的时候，也就是改变的时候了。”',
+            '这是你在进行控制环脱离的仪式。',
+            '距离你半推半就、加入到克隆人彻底派反抗军中，已经过去了半年。在这半年中，你对这个世界有了清晰完整的认识，也因为识字，也在反抗军中完成了不少文书工作。虽然你偶尔仍会觉得与这里格格不入，也无法解释学习过诸多知识的原因，但大体上还是融入了这个世界。',
+            '柳东旭与你的关系近了一些，你们在反抗军大大小小的行动中多次配合，多了几分战友情谊。',
+            '反抗军规定的半年观察期和锻炼期已过，你终于可以尝试摘下象征着屈辱的控制环——以生死不论的代价。',
+            '除了拿到实时录入信息、限时有效的控制扣来解除控制环，控制环只有在克隆人死亡的时候才会自动脱落——为了回收并进行反复利用。于是反抗军为了不受制于人类，只能发展出一套以濒死状态欺骗控制环的方法。',
+            '数千名克隆人以各种各样惨烈的模样，倒在试验方法的路上；而同样有数不胜数的克隆人因为没挺过短暂的死亡期，在奔向自由时奔赴死亡……',
+            '你几乎对时间与空间失去了感知，仿佛漂泊在太空中，被令人战栗的引力牵引向不知名的远方。',
+            '在你大脑几乎停摆的时刻，一段不属于你的记忆好像与此情此景重合。你费力调动起最后一点思维能力，使记忆的画面变得清晰——那是一段在星际间坠落的记忆。（记忆碎片+1）',
+            '“呼！”你在控制环脱落后大口喘息着，贪婪地吸入氧气以唤醒停摆的身体。',
+            '“恭喜你成功。”',
+            '“谢谢……所以我有资格参与行动了吧。”',
+            '反抗军得知，在3天后将会有上万名克隆人，被以克隆人眼中送往养老院的名义、被以人类眼中销毁的名义，作为货物输入到联邦直属的实验室、矿场、奴隶走私交易等等方面。',
+            '之前柳东旭一直以你未能摘环、没有实战经历拒绝你的请求，但作为克隆人中罕见的学者，你认为你加入到行动中，可以让反抗军更好地应对联邦的警戒手段。',
+            '“算了……这次行动，中立反抗军也会参与，如有必要，你也可以去接受他们的保护。”',
+            '你点了点头，着手去做行动前的准备。'
+
+        ]
+        let present = 0;
+        let c = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '柳东旭', '你（微笑）', '', '', '柳东旭', '', '', '',
+            '', '', ''
+        ]
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeBackground(present,0,'../../images/black.png')
+            changeBackground(present,3,'../../images/orb.png')
+            changeBackground(present,15,'../../images/factory.png')
+            changeCharacter(present, 0, "character1", '../../images/character/prot15.png', 0);
+            changeCharacter(present, 15, "character1", '../../images/character/prot15.png', 1);
+            changeCharacter(present, 16, "character2", '../../images/character/liu2.png', 1);
+            changeCharacter(present, 18, "character2", '../../images/character/liu3.png', 1);
+            if (present ==28 )memo(1)
+                if (present > 2 * t.length) {
+                    document.getElementById('dialog_area').style.opacity = 0;
+                    document.getElementById('option_area').style.opacity = 1;
+                }
+        }
+    </script>
+    <title>2-3挣脱</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/factory.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <div id="prompt_area">
+        <div></div>
+        <div id='prompt_text'>存档成功</div>
+        <div id='prompt_button'>
+            <button type="button" onclick='promtdown()'>确定</button>
+        </div>
+    </div>
+    <embed src="../../images/character/prot6.png" id="character1" width="45%">
+    <embed src="../../images/character/liu2.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div>
+        <div id="dialog_area">
+
+        </div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='../chapter3/3-0.html'">准备弹药</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

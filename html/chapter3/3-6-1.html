@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['这个简洁而富有奥秘的公式被你解析出来，使你在一瞬间忽然想起许多科学知识与公式。（记忆碎片+1）'
+        ]
+        let present = 0;
+        //放对应的人物
+        let c = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                memo(2)
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>3-6小菜一碟</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/classroom.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot20.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='3-7.html'">前往研究所</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

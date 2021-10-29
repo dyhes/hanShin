@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['研究的过程触发了你更多的记忆。（获得记忆碎片*1）',
+'你想起自己原本是其他星球的一名研究材料学的科研工作者，却因为飞船在进行宇宙间跃迁时，遇到了突然形成的大型伽马射线暴，导致舱体和你的保护壳一并粉碎，意识流也遭到射线破坏。',
+'你的残留意识漂泊在宇宙间，借由磁场与引力寻找合适的躯壳，于是最后进入到现在这个生物电刚消失不久的身体内。',
+'在寻找躯壳的过程中，你的意识流不断被宇宙射线冲击，导致你的记忆被保护性封存，需要特定的强刺激才能够恢复。',
+'出于对克隆人身份的认同，以及宇宙共同体对生命的广泛尊重，你决定帮助觉醒的克隆人实现理想。',
+'（克隆人科技水平大幅度提升）']
+        let present = 0;
+        //放对应的人物
+        let c = ['','','','','','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                memo(3)
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>3-7研究成功</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/lab.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot14.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='../chapter4/4-1.html'">准备战斗</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

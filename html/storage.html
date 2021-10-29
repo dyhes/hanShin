@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"> 
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="icon" href="images/favicon.ico">
+    <script src='../js/main.js'></script>
+    <style type="text/css">
+        #wrapper {
+            background: url("../images/cover0.png");
+            background-size: cover;
+            color: aliceblue
+        }
+
+        #storage_area {
+            background: url('../images/white.jpg');
+            box-shadow: 3vh 3vw 3vw rgba(0, 0, 0, .5);
+            border-radius: 1vw;
+            grid-area: 3/2/4/3;
+            color: aliceblue;
+            text-align: center;
+            /* display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            grid-template-columns: 1fr 1fr; */
+        }
+
+        #storage_area a {
+            font-size: 5vh;
+            color: black;
+        }
+
+        body {
+            position: relative;
+            bottom: 3vh;
+        }
+
+        #prompt_area_1 {
+            z-index: -10000;
+            position: absolute;
+            opacity: 0;
+            text-align: center;
+            width: 50vw;
+            height: 50vh;
+            margin: 25vh 25vw;
+            background: url('../images/white.jpg');
+            box-shadow: 1vh 1vw 1vw rgba(0, 0, 0, .5);
+            border-radius: .5vw;
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            font-family: "zhuangbi", "SimSun";
+            font-size: 2vw;
+            color: black;
+        }
+
+        #prompt_area_1 button {
+            margin: 0 5vw;
+            font-family: "zhuangbi", "SimSun";
+            font-size: 2vw;
+        }
+    </style>
+    <script>
+        function promtshow_1() {
+            let prom = document.getElementById("prompt_area_1")
+            prom.style.opacity = 1;
+            prom.style.zIndex = 10000;
+        }
+
+
+        function promtdown_1() {
+            let prom = document.getElementById("prompt_area_1")
+            prom.style.opacity = 0;
+            prom.style.zIndex = -10000;
+        }
+
+        function storageclear() {
+            let arr = JSON.parse(localStorage['archive'])
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = 0
+            }
+            localStorage['archive'] = JSON.stringify(arr)
+        }
+    </script>
+    <title>储存</title>
+</head>
+
+<body onclick="msplay()" onpageshow="load()">
+    <audio id='ms' autoplay='autoplay' loop="loop" preload="auto" controls="controls"
+        src='../music/function.mp3'></audio>
+    <div id="wrapper">
+        <nav>
+            <button type="button" class='btn' onclick="history.back()">返回</button>
+            <button type="button" class='btn_1' onclick="promtshow_1()">清空存档</button>
+        </nav>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>请先进行存档</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='history.back();promtdown()'>返回</button>
+            </div>
+        </div>
+        <div id="prompt_area_1">
+            <div></div>
+            <div id='prompt_text'>您是否确定清空所有存档？</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='storageclear();promtdown_1();location="./storage.html"'>确定</button>
+                <button type="button" onclick='promtdown_1()'>取消</button>
+            </div>
+        </div>
+        <div id="storage_area">
+        </div>
+    </div>
+</body>
+
+</html>

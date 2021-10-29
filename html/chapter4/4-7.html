@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['一切准备就绪，你们即将在所有人面前完成一场史无前例也不可能复刻的直播。',
+            '但在开始之前你还是迟疑了，想打开摄像头又缩回手。',
+            '你下意识地摸了摸脖子上的控制环道具，而林夕主动点击了开启直播的按键。',
+            '当人类或气愤、或迷惑、或惶恐地关注个人终端的强制直播时，看到的就是林夕受制于你的画面。',
+            '“克隆人？！”“这是怎么回事啊？林夕小姐怎么会在低贱的克隆人手上！”人类在大街小巷窃窃私语，而你对此无动于衷。',
+            '“在一个科技急速发展的时代，竟然会出现秩序失落、文明蒙昧的乱象，这几乎是不可思议的。”',
+            '“克隆人与人类的区别究竟是什么呢？创造力？劳动力？智力？”',
+            '“其实根本没有区别，除了我们从诞生起就被迫地戴上这个环。”',
+            '你缓缓解下控制环。',
+            '“现在，我就是昱翼了，很可笑不是吗？”',
+            '然后你伸出手……为林夕戴上控制环！',
+            '“现在，你们觉得她是谁呢？”',
+            '“林夕，还是低贱的克隆人？”',
+            '看着直播的人类大多只感受到惶恐或者愤怒，但克隆人却仿佛被当头棒喝，思想开始挣脱人类划下的范畴。',
+            '“我是林夕，这一点不会因为任何事改变。”',
+            '包括她并不是最初的林夕。',
+            '“那么克隆人呢？其实我们是与你们完全相同的生命。这一点，也不会因为任何的控制与践踏改变。科技的意义是带来更好的生活，但绝不意味着建立在践踏生命之上的幸福生活是正确的。”',
+            '“……”',
+            '“或许你说得对。我们真的做错了很多事，并且……也可以和克隆人没什么区别。”',
+            '一如她在众目睽睽之下被戴上控制环。',
+            '你的行为与林夕的话语勾起了大部分人类心底潜在的恐惧。其实并不是所有人类都能完全将克隆人与人类区别看待。偶尔他们看着那些与自己构造完全相同的生命，心中也会涌现出一丝兔死狐悲的惶恐与不忍。',
+            '“我很荣幸，林夕小姐可以在生命的尽头前有这样的觉悟。”',
+            '你拿出了所有人都认得的一样事物——控制扣，然后缓慢却又坚定地按下按键。',
+            '林夕露出一丝恐惧，但她没有挣扎。而你的表情极冷，像是在一遍又一遍提醒着自己，必须完成，不能放手——',
+            '也不能回头。',
+            '“若我甘心赴死……人类之罪……是否…可赎……？”',
+            '……',
+            '林夕就这样走了。',
+            '她叫林夕，可惜不是晨曦的曦，也不是希望的希。',
+            '……',
+            '“生命的珍贵在于它的脆弱，时效和不可取代，我希望所有人都能明白这个道理。”',
+            '你在直播的最后，对着全世界说道。',
+        ]
+        let present = 0;
+        //放对应的人物
+        let c = ['', '', '', '', '', '你', '你', '你', '', '你', '', '你', '你', '', '林夕', '', '你', '林夕', '林夕', '', '', '你',
+            '', '', '', '林夕', '', '', '', '', '你', '', '', '', '', '', '', '', '', '', ''
+        ] //填入名称，旁白不用填
+        function check() {
+            let arr=JSON.parse(localStorage['memory'])
+            let cnt=0;
+            for(let i=0;i<arr,length;i++)if(arr[i]==1)cnt+=1
+            if(cnt==5)location='./4-7-2.html'
+            else location='4-7-1.html'
+        }
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present, 3, 'character2', '../../images/character/lin5.png', 1)
+            changeCharacter(present, 9, 'character1', '../../images/character/pro3.png', 1)
+            changeCharacter(present, 11, 'character2', '../../images/character/lin8.png', 1)
+            changeCharacter(present, 14, 'character2', '../../images/character/lin9.png', 1)
+            changeCharacter(present, 25, 'character2', '../../images/character/lin4.png', 1)
+            changeCharacter(present, 27, 'character2', '../../images/character/lin4.png', 0)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                check()
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-7最终的演讲</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/control.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/pro9.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump();check()">跳过剧情</button>
+        <div id='name_area'></div>
+        <div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

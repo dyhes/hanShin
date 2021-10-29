@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['是懦弱吗？你不知道。',
+'人类于你而言，好像具有你自己都未曾细想过的意义。',
+'你手上的枪坠落到地上，发出“咚”的一声，在死寂的手术室里显得格外刺耳。',
+'你垂眸说了一声“抱歉”，任由对方拿走你的武器出门继续作战，而你谨慎地离开大楼，与接应人员一同返回到安全地带。（人类倾向+2）',
+'此次行动依旧获得了成功，只是与你无关。'
+        ]
+        let present = 0;
+        let c = ['', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,0,'character2','../../images/character/lian2.png',1)
+            if(present==8){
+                let i=localStorage['emo']
+                localStorage['emo']=i+2
+            }
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>3-2无能为力</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/operate.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot21.png" id="character1" width="45%">
+    <embed src="../../images/character/lian2.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='3-5.html'">行动结束</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

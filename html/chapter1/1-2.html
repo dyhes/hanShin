@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src="../../js/main.js"></script>
+    <script src="../../js/change/change.js"></script>
+    <script>
+        let t = ['到了大厅，你遇到了一名中年男子，大概是刚刚对你喊话的人。',
+            '“你怎么才出来？快去换衣服准备采购今天的食材！”',
+            '“抱歉，但我的记忆有些缺失，不记得房间在哪里……”',
+            '“量产的克隆人就是不行……往左走到尽头，换完衣服赶紧来找我领采购的单子！今天的午饭要是又因为你耽误了，有你好果子吃！”',
+            '……',
+            '……吃什么果子？',
+            '还是先顺从对方的指示换好衣服吧',
+            '回到大厅，你从管家手里拿到了今天所需的食材清单。通过一番沟通，你了解到市场的位置以及自身的工作——每日为厨房采购新鲜食材并打扫别墅的卫生。'
+        ]
+        let present = 0;
+        let c=['','管家','你 ','管家','','','','','','','','','','']
+
+        function run() {
+            dialog(t,c,present);
+            present++
+            changeCharacter(present,1,'character2','../../images/character/steward.png',1)
+            changeCharacter(present,5,'character2','../../images/character/steward.png',0)
+            if (present >2*t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>1-2领命</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/longuebg2.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot3.png" id="character1" width="45%">
+    <embed src="../../images/character/steward.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div>
+        <div id="dialog_area">
+
+        </div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='1-3.html'">听从命令</button>
+                <button onclick="location='1-3.html'">前往菜市场</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

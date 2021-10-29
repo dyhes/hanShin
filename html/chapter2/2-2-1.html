@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['柳东旭那些未说出口的话语，好像透过他浑浊却锐利的眼瞳，直直地传达到你的心里。',
+        '是啊，血债只能用最惨烈的代价来偿还。在必要的时候，以暴制暴，也是很好的。',
+        '你轻轻点头表示赞同。',
+        '（克隆人倾向+1，可于记忆面板中查看）'
+        ]
+        let present = 0;
+        let c=['','','','','','','','','','','','','','','','','','']
+
+        function run() {
+            dialog(t,c,present);
+            present++
+            changeCharacter(present,0,"character2",'../../images/character/liu1.png',1);
+            changeCharacter(present,2,"character1",'../../images/character/prot11.png',1);
+            if (present >2*t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                localStorage['emo']=3
+            }
+        }
+    </script>
+    <title>2-2同意杀戮</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/bedbg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <div id="prompt_area">
+        <div></div>
+        <div id='prompt_text'>存档成功</div>
+        <div id='prompt_button'>
+            <button type="button" onclick='promtdown()'>确定</button>
+        </div>
+    </div>
+    <embed src="../../images/character/prot6.png" id="character1" width="45%">
+    <embed src="../../images/character/liu1.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area">
+
+        </div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='2-3.html'">加入反抗军</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

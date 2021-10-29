@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['“握紧你手上的枪！！！时刻准备射击！”',
+'一名与你素不相识的陌生女人，正一边用枪将走廊尽头涌出的人类精准枪杀，一边朝着你大喊道。',
+'这次克隆人营救行动走漏了消息，为了保证效果，两方反抗军一致决定提前发起潜入，却遭遇严阵以待的人类守军。激战之中，你与彻底派反抗军失散，混入中立派反抗军的队伍。',
+'此前，你接受过关于使用枪械等等一系列作为战士的训练，接受也良好，却在扣下扳机的刹那陷入僵直，迟迟没有杀人的决心。若不是女子突然出现救了你一命，你已经成为战报上的一个轻描淡写的数字。'
+        ]
+        let present = 0;
+        let c = ['？？','','','','','','','','','','','']//填入名称，旁白不用填
+
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+        </script>
+
+    <title>3-0枪战</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/hosbg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot20.png" id="character1" width="45%">
+    <embed style="opacity: 1;" src="../../images/character/lian4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='3-1-1.html'">……</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

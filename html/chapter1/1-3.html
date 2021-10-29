@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src="../../js/main.js"></script>
+    <script src='../../js/change/change.js'></script>
+    <script>
+        let t = ['到了菜市场，你照着清单采购了一些食材。中途有位克隆人摊主同你闲聊。',
+            '“……你也是命挺大，前两天被打成那个样子都没死，级别也没掉。当然，也是你主人家心地善良，愿意把你这条命捡回去……”',
+            '听了这番话……你……'
+        ]
+        let present = 0;
+        let c=['','摊主','','','','','','','']
+
+        function run() {
+            dialog(t,c,present);
+            present++
+            changeCharacter(present,2,"character2",'../../images/character/gua0.png',1);
+            if (present >2*t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>1-3买菜</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/shopbg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/gua0.png" id="character2" width="45%">
+    <embed src="../../images/character/prot6.png" id="character1" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div>
+        <div id="dialog_area">
+
+        </div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='1-4-1.html'">保持沉默</button>
+                <button onclick="location='1-4-2.html'">表示认同</button>
+                <button onclick="location='1-4-3.html'">提出疑问</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

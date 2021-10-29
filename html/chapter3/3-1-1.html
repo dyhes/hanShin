@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['走廊尽头渐渐不再涌出敌人，女子趁机拽起你的衣领就往此前计划好的安全道路上狂奔，暂时躲进一间监控已被破坏的手术室。',
+'当她松开你的衣领，你无力地顺着墙壁滑落，瘫坐在地上，脑海里还在不断地回想刚刚血腥的场面。一条条性命在你眼前伴着血花消逝……你第一次感受到原来曾经整理过的文件上，每一个数字都背负着如此沉重的意义。',
+'“彻底派最近已经把脑子杀丢了吗？竟然会派你这样的人参与行动……你究竟知不知道你的身份！这里不是小孩子过家家的地方！”',
+'女人又气又急地朝你低声吼道。',
+'“对于士兵来说，如果你不能站起来，那就是接受死亡。”',
+'她俯下身审视你，与你四目相对。',
+'“你能忍受来自死亡的恐惧吗？”',
+'“你要亲眼看着自己的鲜血流尽，看着自己残缺的身体倒在战场上，看着这个世界在你眼前变得模糊，然后保持着这种觉悟一直到死去。”',
+'“还是你明白杀敌代表的意义？”',
+'她猛地抬手将枪顶着你的太阳穴，顶着你的额头把距离拉近到近似于无，盯着你一字一句地说道——',
+'“你要夺走一个鲜活的生命。你不认识他，不知道他的名字，不知道他的来历。可是他过往几十年的人生，都要终结在你的手里。”',
+'你浑身上下的血液在这一刻凝固，一股发自灵魂的战栗侵蚀了你的肉体。女人望着你的目光极其冷漠，审视着你是否还能拥有战斗的意志。',
+'你是否能够拥有举起枪械屠戮生命的觉悟？即使杀戮本身绝无正确可言。'
+        ]
+        let present = 0;
+        let c = ['','','？？','','？？','','？？','？？','？？','','？？','','','','','','','','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,2,'character2','../../images/character/lian3.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>3-1训斥</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/operate.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot19.png" id="character1" width="45%">
+    <embed style="opacity: 1;" src="../../images/character/lian2.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='3-2-1.html'">是</button>
+                <button onclick="location='3-2-2.html'">否</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

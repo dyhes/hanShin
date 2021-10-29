@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"> 
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="icon" href="images/favicon.ico">
+    <script src='../js/main.js'></script>
+    <style type="text/css">
+        #wrapper {
+            background: url("../images/cover0.png");
+            background-size: cover
+        }
+
+        body {
+            position: relative;
+            bottom: 3vh;
+        }
+
+        p {
+            text-align: center;
+            color: white;
+        }
+    </style>
+    <title>注册</title>
+</head>
+
+<body onclick="msplay()">
+    <audio id='ms' autoplay='autoplay' loop="loop" preload="auto" controls="controls" src='../music/function.mp3'></audio>
+    <div id="wrapper">
+        <nav>
+            <a href="../index.html">回到主页</a>
+            <a href="signin.html">登录界面</a>
+            <a href="../us/groupimage.html">关于我们</a>
+        </nav>
+
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>注册成功，是否转跳到登录页？</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown();location="./signin.html"'>确定</button>
+                <button type="button" onclick='promtdown()'>取消</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div></div>
+            <div id="buttons">
+                <p>用户名:<input size="30" placeholder="请输入用户名"></p>
+                <p>密码:<input size="30" placeholder="请输入密码" type="password"></p>
+                <button type="button" onclick="promtshow()">注册</button>
+                <button type="button" onclick="location='./signin.html'">登录</button>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</body>
+
+</html>

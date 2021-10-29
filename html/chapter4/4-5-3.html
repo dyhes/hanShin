@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['紧接着，你通过篡改总控室里个人终端的存档信息，悄无声息地将人类的身份与克隆人对调。',
+'所有娱乐场所忽然取消对人类的开放、维持秩序的机器粗暴地为他们戴上控制环……人类群体已经顾不上个人终端刚刚强制播放的视频，陷入了极度的惶恐。',
+'与此同时，办公室的门外正传来巨响，而你却漫不经心地抻了个懒腰，听着门外的声响一点点弱下去。',
+'“行动成功，进行下一步计划。”',
+'你听着耳麦里传来的声音，露出一丝微笑。',
+'联邦各地的彻底反抗军，正凭借领先于整个时代的科技，光速收割人类政权，强迫人类戴上象征着“屈辱”的控制环。',
+'就好像每个克隆人曾习以为常的那样。',
+'彻底军原本的计划是收缩所有被打上“克隆人”身份的控制环，以实现对全人类的肃清。但在你的影响下，你们有了一个新的思路——圈养人类。',
+'克隆人服务人类的“本能”，并非一朝一夕就能改变，所以你们选择让克隆人继续好吃好喝地养着家里的人类，只是将曾经束缚着克隆人的三大禁令改到人类身上：禁止伤害新人类，禁止获取除《人类自我修养》外的所有知识，禁止学习新文字。',
+'还有一点，禁止工作。',
+'彻底军将克隆人的称呼更改为新人类，并且打算在你的带领下，系统教学新人类星际语，阻绝旧人类了解新人类文化的可能。',
+'新人类的工作能力极强，并不需要人类进行插手。而在禁止学习新文字的基础上，阻止旧人类在工作的途中积累经验，这些人将深陷舒适的沼泽，然后被不知不觉盖过头顶的泥浆缓慢吞噬。',
+'没有了知识的摄入与工作的输出，人类终将在麻木而平淡的生活里，沦为真正的宠物。']
+        let present = 0;
+        //放对应的人物
+        let c = ['','','','你','','','','','','','','','','','','','','','','','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,9,'character1','../../images/character/pro6.png',1)
+            changeCharacter(present,11,'character1','../../images/character/pro7.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+              
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-5喧宾夺主</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/control.png" );
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/pro7.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='../end/te2.html'">“人是一种易忘且惰性极强的动物，<br>养废就行”</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

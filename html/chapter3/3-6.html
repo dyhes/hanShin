@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['你在连胜的带领下参观了中立军重点发展的流动学校。不同于彻底军专注于发展科技，中立军偏重于对人类社会进行渗透，然后用得到的各方面知识，教化蒙昧的克隆人。',
+'这里的学生，从几岁的孩童到五六十岁的老人都有。而他们在这里，能够获得从诞生开始就缺失的人文关怀，并且获取到从克隆人出发、以更公正的角度刻画社会现状的基础教育。',
+'“克隆人需要的，不仅仅是生存的权利，更是属于自己的思想与文化。现在的克隆人就是没有根基的浮萍，就算表面看起来再充满生机，既耐不过高温也度不过严寒，是不能长久持续的。”',
+'你点点头，看向暂时空无一人的教室，发现里面的黑板上还留着一个简洁的公式——E=mc²。',
+'你想起这个公式是用来描述……'
+        ]
+        let present = 0;
+        //放对应的人物
+        let c = ['','','连胜','','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,2,'character2','../../images/character/lian1.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>3-6教室</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/classroom.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot14.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='3-6-2.html'">行星运转规律</button>
+                <button onclick="location='3-6-1.html'">质量与能量的关系</button>
+                <button onclick="location='3-6-2.html'">力的奥义</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

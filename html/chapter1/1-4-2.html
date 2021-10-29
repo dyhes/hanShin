@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['看着路边跪着乞讨、衣不蔽体的克隆人，你点点头表示认同。你想起曾经出门采购时，见过太多太多倒在路上的次等克隆人。',
+            '是的，即使是克隆人也分等级。即使像他这样走路都困难，但各种器官还可以正常运转的克隆人，也统一挂着“健康”的名号，被粗暴地归为优等克隆人。',
+            '而有些克隆人，在经历各式各样的不幸之后，身体机能急剧下降，被丢弃到次等的行列。他们或许能带着“垃圾”的标签苟延残喘片刻，然后在每一个时刻死去。',
+            '你是幸福的，不是吗？不是主人的克隆体，于是不必担心贡献器官的命运审判；有幸被买入有良心的人家，于是不至于被丢弃暴毙荒野；兢兢业业工作还能在50岁之后进入到“养老院”中。',
+            '你在幸福的人生路上坚定地走下去了。']
+        let present = 0;
+        let c=['','','','','','','','','']
+        
+        function run() {
+            dialog(t,c,present);
+            present++
+            changeBackground(present,1,'../../images/alleybg.png');
+            changeBackground(present,5,'../../images/black.png');
+            changeCharacter(present,1,"character1",'../../images/character/prot6.png',0);
+            if (present >2*t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>1-4同意</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/shopbg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/gua0.png" id="character2" width="45%">
+    <embed src="../../images/character/prot6.png" id="character1" width="45%">
+    <div id="wrapper">
+
+        <button id='jump' onclick="jump()">跳过剧情</button>  <div id='name_area'></div>
+        <div id="dialog_area">
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='../end/be2.html'">回家</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

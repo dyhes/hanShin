@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['时光飞逝，两路反抗军都已作好了最佳准备，只待发起最后的反攻。',
+'其实中立军已经拥有了和平取代现有联邦政权的能力，在联邦高层，有许多人的子女都是中立军协助那些孩子的本体克隆人，所替代过的“人类”。倘若再等上十年二十年，中立军取得政权易如反掌。',
+'但克隆人已经等待得太久太久了。每一分钟的蛰伏，都意味着成百上千的克隆人的枉死。而且联邦为了获得更加温顺的克隆人，正着手研制记忆清洗试剂，计划定期重置克隆人记忆，掐灭隐患的存在——这是反抗军绝不能接受的。',
+'这两年来，为了让你更好地学习知识，中立军与彻底军合力为你安排了在人类世界的身份——昱翼。你以新的身份重新成为一个优秀的科学家，以及一名合格的战士。',
+'在这决定克隆人命运的最后一战中，你负责接应中立军安排进联邦网络总控中心的克隆人，向全世界的克隆人揭露“养老院”的谎言——',
+'也让人类用血的代价铭记，克隆人与他们没有任何区别。']
+        let present = 0;
+        //放对应的人物
+        let c = ['','','','','','','','','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,0,'character1','../../images/character/pro1.png',0)
+            changeCharacter(present,4,'character1','../../images/character/pro1.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-1决战</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/alleybg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/pro1.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='4-2.html'">行动开始</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

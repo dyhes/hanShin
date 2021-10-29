@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['你在连胜的帮助下，与彻底军进行了工作交接，顺利加入中立军。',
+'“世界终将属于我们。而我坚信，能够真正实现这个目标的只有彻底反抗军。”这是柳东旭最后留给你的话。',
+'你对连胜坦诚了自己失忆之后的经历，包括你拥有的、甚至超出整个时代的知识。她没有表现出任何质疑，而是立刻安排你进入研究所协助研究，力求研制出压制人类的科技。',
+'你对于她果决的态度感到讶异。在今天，你们才初次见面，她交付出的信任甚至让你惶恐。',
+'“与其说是相信你……不如说我相信的是我自己。愿你是上天赐予克隆人的普罗米修斯。”',
+'你重重地点了点头。'
+        ]
+        let present = 0;
+        //放对应的人物
+        let c = ['','','','','连胜','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,3,'character2','../../images/character/lian1.png',1)
+            changeCharacter(present,5,'character2','../../images/character/lian5.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>3-5连胜的期望</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/factory2.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot14.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='3-6.html'">前往中立军设立的学校参观</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

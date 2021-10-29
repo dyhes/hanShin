@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src="../../js/change/change.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['当你从昏迷中醒来时，脑袋里痛得仿佛有一千根针在搅动。',
+            '你环顾四周，发现四周阴暗的环境好像很熟悉，又仿佛极其陌生。低头时你发现自己衣服上有一些血迹，口腔里有血腥味，似乎是你自己吐出来的血，身上也青一块紫一块的，一动便浑身发痛。',
+            '你试图回想之前发生的事，然而顿时加剧的疼痛让你忍不住喊出声来，你立刻放弃了这个想法。可随之而来的坏消息是，你失去了过往几乎全部的记忆，只残留了些许本能。',
+            '“35211号？既然有命醒了就赶紧去换套衣服然后工作。”门外传来一个中年男子的声音。',
+            '“明白！”你下意识进行回应，然而你并不清楚他在说什么。听到对方的脚步声渐渐远去，你决定赶紧搜索一下四周，在最短的时间里获取到一些信息，或者唤醒部分记忆。'
+        ]
+        
+
+        let present = 0;
+        let c=['','','','管家','你','']
+
+        function run() {
+            dialog(t,c,present);
+            present++
+            changeCharacter(present,3,'character2','../../images/character/steward.png',1)
+            if (present > 2*t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+
+        
+    </script>
+    <title>1-1苏醒</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/1-2.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run();g1init(1,'')" onclick="run()">
+    <embed src="../../images/character/prot2.png" id="character1" width="45%">
+    <embed src="../../images/character/steward.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div>
+        <div id="dialog_area">
+        </div>
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='../mini-game/g1/choice.html'">开始探索</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

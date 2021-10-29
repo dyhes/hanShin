@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['你看着她，没有伸出手，而是选择深深鞠了一躬。',
+'“非常感谢您在刚刚的行动中救了我的命，也让我作为一名战士重获新生。但……我想我还是更倾向于留在彻底反抗军中。”',
+'连胜点点头，也不再强求，转身准备带着中立军离开。',
+'“那就祝我们之间没有兵戎相向的一天。”',
+'她边走边背对着你朗声说道。',
+'如果克隆人与人类的战争获得了最终的胜利，那么，彻底军与中立军也总归会决出最终的胜者。'
+        ]
+        let present = 0;
+        let c = ['','你','','连胜','','']//填入名称，旁白不用填
+
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,0,'character2','../../images/character/lian1.png',1)
+            changeCharacter(present,3,'character2','../../images/character/lian5.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+        </script>
+
+    <title>3-3婉拒</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/hosbg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot12.png" id="character1" width="45%">
+    <embed src="../../images/character/lian1.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>                
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='3-4.html'">回到彻底军</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

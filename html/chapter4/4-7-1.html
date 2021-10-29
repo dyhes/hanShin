@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['最后，克隆人与人类达成了共识，人类也切实开始反思自己的所作所为。',
+'他们将在接下来的生命里戴上与克隆人相同的控制环，虽然所有的控制环都不再拥有控制生命的能力。',
+'人类将用实际行动来弥补克隆人受到的创伤。他们重新开始思考，他们写文学去探讨生命、去审判自己……而克隆人监督着这一切。',
+'一个物种所衍生出的两个种族，距离正视历史、和平共处，还有很长的路要走。克隆人所经历的上百年的创伤，也许同样需要上百年去治愈。如果舆论能在偏颇和拉扯之间寻找到一种波动性的平衡，就已经很好了。',
+]
+        let present = 0;
+        //放对应的人物
+        let c = ['','','','','','','','','','','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeBackground(present,1,'../../images/orb.png')
+            changeBackground(present,3,'../../images/he3.png')
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-7人类审判</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/white.png" );
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='../end/he1.html'">所幸时间还长</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

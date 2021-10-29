@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['一切准备就绪。虽然小屋外，克隆人与人类通过科技手段的激战还会维持许久，但这一切终于要结束了。',
+'视频正在上传，那记录了“养老院”名号背后，对于克隆人进行的欺压侮辱、人体实验、贩卖压榨等等的影像将展示在世人面前，而你用克隆人掌握的最新科技封锁了这间小屋，阻止任何人的闯入。',
+'所有能做的都已经做完，你始终紧绷着的神经开始放松，但林夕却忽然对你开口说：',
+'“你知道，让人类感到恐惧最好的方法是什么吗？”',
+'林夕忽然朝着你温和地笑了一下，一如你最初见她时的那样，象征着这个世界上最纯粹的美好。',
+'“是要让他们看到，一个人的毁灭是如何的轻易、如何的无意义。”',
+'她对你讲述了完整的计划。',
+'首先，你们需要控制所有的个人终端，包括人类与克隆人的，反复播放制作好的视频，以戳破克隆人心中的圣地——“养老院”的谎言。唯有掐灭吊着克隆人的最后一点希望，才能逼出更多克隆人的血性与自我。',
+'这是你知道的部分，但她告诉你，还有第二部分的计划需要你进行配合。林夕将用自己的生命，为这场战争献上盛大而决绝的谢幕演出……']
+        let present = 0;
+        //放对应的人物
+        let c = ['','','','林夕','','林夕','','','','','','']//填入名称，旁白不用填
+
+        function join() {
+            if(localStorage['join']==1)location='4-5.html'
+            else location='4-6.html'
+        }
+
+        function run() {
+            localStorage['goo']=0
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,3,'character1','../../images/character/pro2.png',1)
+            changeCharacter(present,4,'character2','../../images/character/lin6.png',1)
+            changeCharacter(present,5,'character2','../../images/character/lin5.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                join()
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-4林夕的计划</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/control.png" );
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run();memo(4)" onclick="run()">
+    <embed src="../../images/character/pro1.png" id="character1" width="45%">
+    <embed src="../../images/character/lin1.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump();join()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

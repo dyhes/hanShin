@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['借着参观的名义，你们逛了几个房间之后，她镇定地带着你进入了总控室。虽然这样不合规矩，但以林夕的身份，你们在此停留片刻，也没有人会说什么。',
+'刚关上门，林夕就熟练地利用光脑调动出系统源代码，而你迅速找到位置，拆卸下总联邦网络的控制面板，解除任何能够中断个人终端连接的装置。',
+'接下来你将进行控制面板的修改操作，即完成小游戏：反转迷局。']
+        let present = 0;
+        //放对应的人物
+        let c = ['','','']//填入名称，旁白不用填
+        function goo(){
+            localStorage['goo']=1;
+        }
+        function check(){
+            console.log(localStorage['goo'])
+            if(localStorage['goo']==1)location='./4-4.html'
+        }
+        function run() {
+            dialog(t, c, present);
+            present++
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+                memo(4)
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-3反转迷局</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/control.png" );
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run();check()" onclick="run()">
+    <embed src="../../images/character/pro1.png" id="character1" width="45%">
+    <embed src="../../images/character/lin1.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='../mini-game/g4/g4.html';goo()">和她一起进去</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

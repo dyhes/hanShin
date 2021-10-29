@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['“心地……善良？”',
+            '菜摊摊主抬起头奇怪地看了你一眼。',
+            '“不然呢？”',
+            '你支吾了两声，也说不出什么。',
+            '但你无法理解。',
+            '失去许多记忆的你并不能理解为什么仅仅将你领回去，并且只是为了让你继续工作发挥剩余价值的行为，也算得上仁慈。你眼前的摊主也是克隆人，却会说出这样的话语……原来这一切是克隆人该习以为常的吗？',
+            '你打了个寒颤，对自己的身份产生了强烈的排斥，旋即心中又涌现出一股沉重的悲哀之情。就好像事情不该是这样的。',
+            '摊主状似低头，余光却目睹了你的所有反应。他习惯性地用手扶了扶脖子上的控制环，也没继续闲聊的话题，正常地把菜交给你。',
+            '你拎着一大堆菜，艰难地往主人家的方向挪动。身体客观的原因让你走不快，但你也确实不想很快地回到那个“家”里。',
+            '你认真的观察街道上的景象，发现那些行色匆匆的、在工作的，几乎全部都是克隆人。或者说，所有不需要高等教育才能完成的工作，全部都是由克隆人完成的。',
+            '你甚至发现了一家光明正大营业的夜总会，同时还看到一个中年男人拎着一个貌美的克隆人小女孩走了进去。',
+            '你是否选择跟上去？'
+            ]
+        let present = 0;
+        let c=['','','菜摊摊主','','','','','','','','','','','','','','']
+
+        function run() {
+            dialog(t,c,present);
+            present++
+            changeBackground(present,9,'../../images/alleybg.png');
+            changeCharacter(present,11,"character1",'../../images/character/prot6.png',0);
+            changeCharacter(present,2,"character2",'../../images/character/gua0.png',1);
+            changeCharacter(present,9,"character2",'../../images/character/gua0.png',0);
+            if (present >2*t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>1-4质疑</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/shopbg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot7.png" id="character1" width="45%">
+    <embed src="../../images/character/gua0.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div>
+        <div id="dialog_area">
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='1-5-2.html'">是</button>
+                <button onclick="location='1-5-1.html'">否</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

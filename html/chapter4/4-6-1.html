@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['“不，不……会有其他办法的！”',
+'你激烈地对她说道，眼眶开始发红。而林夕平静地仿佛这一切都与她无关，就好像她只是讲了一个别人的故事。',
+'“来不及了，而且这也是中立军实现目标的最好办法。虽然我觉得，迟来的正义从来就不是正义，只是弥补而已。但这份虚无的正义总归是聊胜于无的。”',
+'只要她完成了这次直播，就算是彻底军再发展出什么科技，也不能越过中立军去实现统治。因为克隆人不仅仅需要生存空间，更需要得到人类的忏悔与反思。',
+'在她看来，彻底军所推崇的践踏人类尊严，只会让他们自己的双手浸透无辜者的鲜血，变得和那些人类一样肮脏。',
+'人性本恶，一旦沾染了污浊，就会不停地堕落。',
+'一开始只是凭借着一腔愤恨和怨毒而期望复仇，杀了主谋就想杀从犯，杀了从犯就想杀粉饰太平之人，杀了粉饰太平的人就想杀冷漠旁观的人，杀了这些又会想杀那些同样做过恶事的人、那些发现蛛丝马迹的人、那些无辜的目击证人……',
+'于是双手沾满血腥，最后也变成一个罪无可赦的恶人。',
+'“为什么你就这么不愿意活下来啊！”',
+'你近乎于无理取闹地朝着她低吼道，即使你是那么的清楚，她无比认真地在每一天好好生活。',
+'林夕甚至还保持着微笑，这笑容让你觉得刺眼。',
+'“我也没办法啊。”',
+'“我明明都拼尽全力地想要活下去了啊。”',
+'有时候不是她不想活着，而是有一些事情比活着要更加重要。',
+'她曾经也以为自己为了活下去会不择手段，会因为自私而变得面目全非，会拥有将尊严与傲骨一同舍弃的觉悟。',
+'但是当她的膝盖骨被打碎，当人性罪恶凝聚而成的泥水灌入她的咽喉，她才发现死亡其实也没有那么让人难以接受。当她无力反抗地看着自己被水泥风干成一团腐烂的血肉，至少她还有一块脊骨能撑出一个人样来。',
+'其实她没有多少崇高而伟大的思想，也没有舍己为人的觉悟，她只是想让自己心里好过一点，说白了还是自私。',
+'有的时候她看似拥有选择的权利，但是其实从一开始就不存在抉择的可能。',
+'不是想与不想，而是能与不能。']
+        let present = 0;
+        //放对应的人物
+        let c = ['你','','林夕','','','','','','你','','','林夕','林夕','','','','','','','','','','','','']//填入名称，旁白不用填
+
+        function check() {
+            let arr=JSON.parse(localStorage['memory'])
+            let cnt=0;
+            for(let i=0;i<arr,length;i++)if(arr[i]==1)cnt+=1
+            if(cnt<3)location='./4-5-1.html'
+            else location='4-7.html'
+          }
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,9,'character1','../../images/character/pro5.png',1)
+            changeCharacter(present,12,'character1','../../images/character/pro6.png',1)
+            changeCharacter(present,0,'character2','../../images/character/lin6.png',1)
+            changeCharacter(present,7,'character2','../../images/character/lin5.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+        
+                check()
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+
+        
+    </script>
+    <title>4-6说服</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/control.png" );
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/pro4.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump();check()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['战斗结束后，女子过来找到你。',
+'“我是连胜，有没有兴趣加入中立军？”',
+'她微笑着对你伸出手。',
+'“虽然你还不能说是一名合格的士兵，但成长性与适应力倒是超乎我的想象。”',
+'“我能看出你并不是会因为仇恨，而选择对人类进行无止境杀戮的人，中立军更适合你。我们旨在创造人类与克隆人和平共存的世界，使克隆人作为一个获得尊重的民族，与现存的人类融为一体。”',
+'你是否选择加入中立反抗军？'
+        ]
+        let present = 0;
+        let c = ['','？？','','连胜','连胜','']//填入名称，旁白不用填
+
+        function join(flag) {
+            localStorage['join']=0
+            if(flag)localStorage['join']=1
+          }
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,1,'character2','../../images/character/lian1.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+        </script>
+
+    <title>3-3连胜</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/hosbg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot12.png" id="character1" width="45%">
+    <embed src="../../images/character/lian1.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>                
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='3-3-1.html';join(1)">是</button>
+                <button onclick="location='3-3-2.html';join(0)">否</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

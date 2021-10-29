@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src="../../js/main.js"></script>
+    <script src='../../js/change/change.js'></script>
+    <script>
+        let t = ['你装作路过，缓慢地挪到那里时，隐约听到里面男人对着夜总会经理说出“卖你十年”,“难得的货”之类的话。',
+            '随后经理和男人签了一份协议，扫了下男人的个人终端，就派人将女童领了下去。',
+            '你看到女童脸上露出绝望的神情，脑袋一热就想往里冲，却被身后的人一把制住、直接拖到附近昏暗的小巷里。',
+            '路上的行人对此见怪不怪，因为——拖着你的那是个人类。',
+            '人类对克隆人做任何事情都是正确的。',
+            ]
+        let present = 0;
+        let c=['','','','','','','','','','','','','','','','','']
+
+        function run() {
+            dialog(t,c,present);
+            present++
+            changeCharacter(present,3,"character1",'../../images/character/prot10.png',1);
+            if (present >2*t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>1-5-2跟踪</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/alleybg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot6.png" id="character1" width="45%">
+    <embed src="../../images/character/gua0.png" id="character2" width="45%">
+    <div id="wrapper">
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id='name_area'></div>
+        <div id="dialog_area">
+        </div>
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='1-6.html'">……</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        let t = ['你虽然不了解这是什么魔幻画面，但总觉得与你的处境并没有太大的关系，于是选择了继续在街上游荡，不断了解这个世界。',
+            '结果由于你回去的太晚，伤势又进一步恶化，主人家非常生气，决定给你提早退休，打包扔到“养老院”去。',
+            '你想起以前在电视上看到过的、对“养老院”桃源仙境般的描述，欣喜之余又带着深深地惶恐。',
+            '你应该可以在那里享受到闲暇时光与自由气息、学习喜欢的一切知识，并且得到特制激素、重新获得爱情的能力吧？在踏进“养老克隆人审核中心”的前一刻，你还在想着。',
+            '……或许吧。']
+        let present = 0;
+        let c=['','','','','','','','','']
+
+        function run() {
+            dialog(t,c,present);
+            present++
+            changeCharacter(present,1,"character1",'../../images/character/prot6.png',0);
+            changeBackground(present,2,'../../images/black.png');
+            if (present >2*t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+            }
+        }
+    </script>
+    <title>1-5-1归家</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/alleybg.png");
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/prot6.png" id="character1" width="45%">
+    <embed src="../../images/character/prot5.png" id="character2" width="45%">
+    <div id="wrapper">
+        <div id='name_area'></div>
+
+        <div id="dialog_area"></div>
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <button onclick="location='../end/be3.html'">顺从天命</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

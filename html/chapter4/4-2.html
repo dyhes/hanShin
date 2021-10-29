@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['“昱翼，你还是第一次来这里吧，我带你参观一下。”',
+'她就是与你一同负责在行动中掌控联邦网络的联邦总统之女，林夕。由于尊贵的身份、极具亲和力的性格，以及进行研发科研的天赋，林夕在整个联邦具有极高的人气，被无数人类追捧。',
+'或者说她是曾经林夕的影子，00003号。',
+'你现在的身份是一名人类新锐科学家，曾以此为由，与林夕有数次接触。而你们在完成反抗军任务之余，也成为了不错的朋友。']
+        let present = 0;
+        //放对应的人物
+        let c = ['林夕','','','','','','']//填入名称，旁白不用填
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,0,'character2','../../images/character/lin1.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+         //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-2林夕</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/longuebg.png" );
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/pro1.png" id="character1" width="45%">
+    <embed src="../../images/character/lin1.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+                <button onclick="location='4-3.html'">和她一起进去</button>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>

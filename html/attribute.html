@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"> 
+    <link rel="stylesheet" href="../css/master.css">
+    <script src='../js/main.js'></script>
+    <link rel="icon" href="images/favicon.ico">
+    <style type="text/css">
+        #wrapper {
+            background: url("../images/cover0.png");
+            background-size: cover
+        }
+
+        body {
+            position: relative;
+            bottom: 3vh;
+        }
+
+    </style>
+    <style>
+        #attribute_area {
+            height: 100%;
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto, 1fr;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 1.25vw;
+            color: whitesmoke;
+            -webkit-box-shadow: 10px 10px 99px 12px #AAFFEE;
+            -moz-box-shadow: 10px 10px 99px 12px #AAFFEE;
+            box-shadow: 10px 10px 99px 12px #AAFFEE;
+        }
+
+        #attribute_area img {
+            grid-area: 1/1/2/2;
+            width: auto;
+            height: 50vh;
+        }
+
+        #attribute_area #attributes {
+            grid-area: 1/2/2/3;
+            display: grid;
+            grid-template-rows:5vh auto 5vh 10vh auto 5vh;
+        }
+
+        #memory{
+            margin-top: 5vh;
+        }
+
+        #tendency {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+        }
+
+        #tendency_bar {
+            border: none;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        #tendency_bar div {
+            width: 100%;
+            border: none;
+            height: 4vh;
+            position: relative;
+            bottom: 1.5vh;
+        }
+
+        p{
+            font-family:"zhuangbi","SimSun";
+            text-align: center;
+            margin: 0;
+        }
+        #descri{
+            font-family:"zhuangbi","SimSun";
+            margin-top:5vh;
+        }
+        
+    </style>
+    <script src="/js/main.js"></script>
+    <script>
+        function attriInit() {
+            //memory
+            let d = document.getElementById('memory')
+            let arr = JSON.parse(localStorage['memory'])
+            let sum = 0
+            for (let i = 0; i < arr.length; i++) {
+                sum = sum + arr[i]
+            }
+            let p = document.createElement('p')
+            let t = document.createTextNode(`记忆碎片收集进度：${sum}/5`)
+            d.appendChild(p)
+            p.appendChild(t)
+            //tendency
+            let td = Number(localStorage['emo'])
+            let bars = document.getElementById("tendency_bar").children;
+            for (let i = 0; i < 7; i++) {
+                if (i < td) bars[i].style.backgroundColor = "#FFFF00";
+                else if (i == td) bars[i].style.backgroundImage = "linear-gradient(90deg,#FFFF00,#00FFFF)";
+                else bars[i].style.backgroundColor = "#00FFFF";
+            }
+            t=['你想灭绝人类','你觉得克隆人应该奋起反抗','比起克隆物，你认为自己更像一个独立的人','人类与克隆人的界限在你眼中变得模糊','你的记忆告诉你服从是克隆人的天职','无论如何，克隆人不该伤害人类','你衷心地希望自己是一个人类而非克隆人','你愿为人类的未来奉上一切']
+            let np=document.createElement('p')
+            np.innerHTML=`描述:${t[td]}`
+            document.getElementById('descri').appendChild(np)
+        }
+    </script>
+    <title>attribute</title>
+</head>
+
+<body onpageshow="attriInit()" onclick="msplay()">
+    <audio id='ms' autoplay='autoplay' loop="loop" preload="auto" controls="controls" src='../music/function.mp3'></audio>
+    <div id="wrapper">
+        <nav>
+            <button type="button" class='btn' onclick="history.back()">返回</button>
+        </nav>
+        <div id="option_area">
+            <div id="attribute_area">
+                <img src="../images/character/lead.png">
+                <div id="attributes">
+                    <div id="memory"></div>
+                    <div></div>
+                    <p id='p1'>情感倾向</p>
+                    <div id="tendency">
+                        <p>人类 </p>
+                        <div id="tendency_bar">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <p> 克隆人</p>
+                    </div>
+                    <div id='descri'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

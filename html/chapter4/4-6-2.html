@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src='../../js/change/change.js'></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        //放剧情
+        let t = ['……听了她的计划，或者说反抗军默认的计划，你有一瞬间感到难以置信——',
+'可随即又觉得没什么不能理解的。',
+'你早不再是初到这个世界时，总会为这世界感到痛心的生命。你敏感的同理心，在刀山火海中来来回回滚了两圈，又被荆棘撕扯得鲜血淋漓，已经生硬了许多。',
+'战争从不会因为任何人声嘶力竭地呼喊，就停下倾轧的步伐。有人打碎了你的膝盖，逼得你不得不跪，可打碎了你的脊梁，又要拿什么来撑这一身的骨血？',
+'——总有一些比生命更重要的东西。']
+        let present = 0;
+        //放对应的人物
+        let c = ['','','','','','','','']//填入名称，旁白不用填
+
+        function check() {
+            let arr=JSON.parse(localStorage['memory'])
+            let cnt=0;
+            for(let i=0;i<arr,length;i++)if(arr[i]==1)cnt+=1
+            if(cnt<3)location='./4-5-1.html'
+            else location='4-7.html'
+          }
+
+        function run() {
+            dialog(t, c, present);
+            present++
+            changeCharacter(present,1,'character1','../../images/character/pro8.png',1)
+            changeCharacter(present,3,'character1','../../images/character/pro3.png',1)
+            if (present > 2 * t.length) {
+                document.getElementById('dialog_area').style.opacity = 0;
+                document.getElementById('option_area').style.opacity = 1;
+        
+                check()
+                //想实现的特殊功能用注释写在这里
+            }
+        }
+    </script>
+    <title>4-6妥协</title>
+    <style type="text/css">
+        #wrapper {
+            background: url("../../images/control.png" );
+        }
+    </style>
+
+</head>
+
+<body onpageshow="chapInit();run()" onclick="run()">
+    <embed src="../../images/character/pro6.png" id="character1" width="45%">
+    <embed src="../../images/character/prot4.png" id="character2" width="45%">
+    <div id="wrapper">
+        <button id='jump' onclick="jump();check()">跳过剧情</button>
+        <div id='name_area'></div><div id="dialog_area"></div>
+
+        <div id="function_area">
+            <button onclick=save()>存档</button>
+            <button onclick="location='../storage.html'">读档</button>
+            <button onclick="location='../acheivement.html'">成就</button>
+            <button onclick="location='../attribute.html'">记忆</button>
+            <button onclick="location='../../index.html'">主页</button>
+        </div>
+        <div id="prompt_area">
+            <div></div>
+            <div id='prompt_text'>存档成功</div>
+            <div id='prompt_button'>
+                <button type="button" onclick='promtdown()'>确定</button>
+            </div>
+        </div>
+        <div id="option_area">
+            <div class="blank"></div>
+            <div id="buttons">
+                <!--选项，在location中修改链接-->
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+</body>
+
+</html>
